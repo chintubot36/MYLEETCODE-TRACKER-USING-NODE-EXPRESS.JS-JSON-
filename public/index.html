@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sai's LeetCode</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">S</div>
+      <div><strong>Sai's</strong><span>LeetCode</span></div>
+    </div>
+
+    <nav>
+      <button class="nav active" data-section="dashboard">⌂ <span>Dashboard</span></button>
+      <button class="nav" data-section="problems">▦ <span>All Problems</span></button>
+      <button class="nav" data-section="categories">◈ <span>Categories</span></button>
+      <button class="nav" data-section="recent">◷ <span>Recent Solves</span></button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="https://leetcode.com/u/kiran_sai45/" target="_blank" rel="noreferrer">↗ Open LeetCode</a>
+      <button id="syncBtn" class="sync">⟳ Sync now</button>
+      <button id="importHelpBtn" class="sync">⬇ Import ALL code</button>
+    </div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">PERSONAL CODING TRACKER</p>
+        <h1 id="pageTitle">Dashboard</h1>
+      </div>
+      <div class="profile">
+        <div class="avatar">SK</div>
+        <div><strong id="username">kiran_sai45</strong><small>LeetCode profile</small></div>
+      </div>
+    </header>
+
+    <section id="dashboard" class="section active">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">WELCOME BACK, SAI KIRAN</p>
+          <h2>Keep solving. <span>Keep growing.</span></h2>
+          <p class="hero-text">Your accepted LeetCode problems are synced into one clean personal dashboard.</p>
+        </div>
+        <div class="hero-badge">AUTO SYNC<br><b>20 SEC</b></div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><span>Total Solved</span><b id="totalSolved">0</b><small>Accepted problems</small></div>
+        <div class="stat"><span>Easy</span><b id="easy">0</b><small>Fundamentals</small></div>
+        <div class="stat"><span>Medium</span><b id="medium">0</b><small>Interview level</small></div>
+        <div class="stat"><span>Hard</span><b id="hard">0</b><small>Advanced</small></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h3>Difficulty Progress</h3><span id="lastSync">Not synced</span></div>
+          <div class="bars">
+            <div><label>Easy <b id="easyPct">0%</b></label><div class="bar"><i id="easyBar"></i></div></div>
+            <div><label>Medium <b id="mediumPct">0%</b></label><div class="bar"><i id="mediumBar"></i></div></div>
+            <div><label>Hard <b id="hardPct">0%</b></label><div class="bar"><i id="hardBar"></i></div></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><h3>Top Topics</h3><span>Based on solved</span></div>
+          <div id="topTopics" class="topic-list"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Latest Solves</h3><button class="text-btn" data-go="recent">View all →</button></div>
+        <div id="latest" class="problem-list"></div>
+      </div>
+    </section>
+
+    <section id="problems" class="section">
+      <div class="toolbar">
+        <input id="search" placeholder="Search problem..." />
+        <select id="difficultyFilter"><option value="all">All difficulties</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+        <select id="topicFilter"><option value="all">All topics</option></select>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>All Solved Problems</h3><span id="problemCount">0 problems</span></div>
+        <div id="allProblems" class="problem-list"></div>
+      </div>
+    </section>
+
+    <section id="categories" class="section">
+      <div class="category-grid" id="categoryGrid"></div>
+    </section>
+
+    <section id="recent" class="section">
+      <div class="panel">
+        <div class="panel-head"><h3>Recent Solves</h3><span>Newest first</span></div>
+        <div id="recentProblems" class="problem-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <button id="closeModal" class="close">×</button>
+      <p class="eyebrow">MY SOLUTION</p>
+      <h2 id="modalTitle"></h2>
+      <p id="modalMeta"></p>
+      <textarea id="codeBox" placeholder="Paste your accepted Java / JavaScript / C++ / Python code here..."></textarea>
+      <div class="modal-actions">
+        <button id="saveCode" class="primary">Save solution</button>
+        <a id="leetcodeLink" target="_blank" rel="noreferrer" class="secondary">View on LeetCode ↗</a>
+      </div>
+      <p class="note">LeetCode's public profile data can identify accepted submissions, but it does not expose your private submitted source code. Paste your code here once to keep your personal program with the problem.</p>
+    </div>
+  </div>
+
+  <div id="importHelp" class="modal hidden">
+    <div class="modal-card small-card">
+      <button id="closeImportHelp" class="close">×</button>
+      <p class="eyebrow">AUTHENTICATED IMPORT</p>
+      <h2>Import ALL your LeetCode programs</h2>
+      <ol class="import-steps">
+        <li>Keep this website running.</li>
+        <li>Open <a href="https://leetcode.com/" target="_blank" rel="noreferrer">LeetCode</a> and make sure you are logged in to <b>kiran_sai45</b>.</li>
+        <li>Install the included Chrome extension from the <code>extension</code> folder.</li>
+        <li>Open LeetCode, click the extension, and choose <b>Import all accepted submissions</b>.</li>
+        <li>The extension reads your authenticated LeetCode submissions in your browser and sends the results only to <code>http://localhost:3000</code>.</li>
+      </ol>
+      <p class="note">Your LeetCode password and session cookie are never requested, displayed, or stored by this project. The import uses your existing logged-in browser session. LeetCode's authenticated submission APIs can return submission details including code. citeturn6view1</p>
+    </div>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

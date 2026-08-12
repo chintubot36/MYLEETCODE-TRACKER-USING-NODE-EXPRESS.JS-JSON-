@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Sai's LeetCode Importer",
+  "version": "1.0.0",
+  "description": "Import all accepted LeetCode submissions and their source code into Sai's LeetCode running on localhost.",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://leetcode.com/*",
+    "http://localhost:3000/*"
+  ],
+  "action": {
+    "default_title": "Sai's LeetCode Importer",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://leetcode.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
