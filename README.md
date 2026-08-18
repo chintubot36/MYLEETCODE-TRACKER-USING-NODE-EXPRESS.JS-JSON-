@@ -284,7 +284,9 @@ Your imported solutions will appear in the dashboard.
 
 📊 Example Import
 
-For example, if the account has:
+For example, if the account has: 
+<img width="1600" height="852" alt="image" src="https://github.com/user-attachments/assets/06334a89-5f88-4706-ae42-da75b89b39d7" />
+
 
 187 Accepted submissions
 
