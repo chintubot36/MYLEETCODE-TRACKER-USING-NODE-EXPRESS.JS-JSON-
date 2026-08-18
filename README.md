@@ -4,8 +4,6 @@ Sai's LeetCode is a personal LeetCode solution management and progress-tracking 
 
 The project is designed to help developers keep all their LeetCode practice in one place and quickly review previously solved programs.
 
-WEBSITE LINK :https://agent-6a8498db468170341--mypersonalcodingtracker.netlify.app/
-
 ✨ Features
 
 📊 Personal LeetCode dashboard
