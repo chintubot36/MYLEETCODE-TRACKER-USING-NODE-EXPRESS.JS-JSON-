@@ -494,7 +494,7 @@ Git/GitHub project management
 
 Project Name: Sai's LeetCode
 
-Developer: Sai Kiran
+Developer: Sai Kiran Kumbam
 
 LeetCode Username: kiran_sai45
 
